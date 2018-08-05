@@ -1,20 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+    <form novalidate [formGroup]="registrationForm"  (ngSubmit)="onSubmit(registrationForm.value)"> 
+      <div class="form-container">
+        <div class="form-group">
+          <label>First Name:</label>
+        <input  type="text" class="form-control" formControlName="firstName" >
+        <div class="alert"  *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').hasError('required')"> 
+            The First name is required.  
+           </div>  
+        </div>
+        <div class="form-group">
+          <label>Country:</label>
+        <select class="form-control" formControlName="country"  >
+          <option *ngFor="let country of countries" [ngValue]="country.key">{{country.value}}</option>
+        </select>
+        <div class="alert"  *ngIf="registrationForm.get('country').touched && registrationForm.get('country').hasError('required')"> 
+            Country is required.  
+           </div> 
+        </div>
+        <div class="address_block">
+          <h5>Adrress:</h5>
+          <div formGroupName="address">
+            <div class="form-group clearfix">
+               <label>Street:</label>
+               <input type="text" class="form-control" formControlName="street">
+               <div class="alert"  *ngIf="registrationForm.get('address.street').touched && registrationForm.get('address.street').hasError('required')"> 
+                  Street is required.  
+                </div> 
+           </div>
+           <div class="address_block">
+             <h5>Address2:</h5>
+             <div formGroupName="address2">
+               <div class="form-group clearfix">
+                 <label>Street</label> 
+                 <input type="text" class="form-control" formControlName="street">
+                 <div class="alert"  *ngIf="registrationForm.get('address.address2.street').touched && registrationForm.get('address.address2.street').hasError('required')"> 
+                    Street is required.  
+                  </div> 
+               </div>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="address_block">
+          <h5>Hobby:</h5>
+                    <div formArrayName="hobbies">
+                      
+                        <div *ngFor="let hobby of registrationForm.controls.hobbies.controls; let i = index">
+                          <div [formGroupName]="i" >
+                            <div class="form-group clearfix">
+                            <input type="text" class="form-control column float"placeholder="Name" formControlName="name">
+                            
+                            <input type="text" class="form-control column float" formControlName="desc">
+                            
+                            <button class="button buttonAdd" (click)="addHobbies()" type="button">add</button>     
+                            <div class="alert"  *ngIf="hobby.controls.name.touched && hobby.hasError('required', 'name')"> 
+                                Name is required.  
+                              </div>
+                              <div class="alert"  *ngIf="hobby.controls.desc.touched && hobby.hasError('required', 'desc')"> 
+                                Description name is required.  
+                                </div>
+                            <button class="button buttonRemove" (click)="removeHobbies(i)" type="button">Remove</button>
+                          </div>   
+                              
+                          </div>
+                          
+                        </div>
+                    
+                      </div>
+        </div>
+        
+                      <button type="submit" class="button buttonSave" [disabled]="registrationForm.invalid">Save</button>
+             </div>       
+         </form>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 

@@ -1,0 +1,80 @@
+.container{
+    background-color: rgba(255, 255, 255, 0.227);
+    margin: auto;
+    width:70%;
+    width: 65%;
+    padding: 40px;
+}
+.address_block{
+    border:1px solid #ddd;
+    padding:15px;
+    border-radius: 2px;
+    position: relative;
+}
+.clearfix{
+    clear: both;
+}
+.address_block h5{
+    font-family: arial;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    top: -44px;
+    background: #fff;
+    padding: 0 16px;
+}
+.form-group {
+    margin:15px 0;
+}
+.form-group label{
+    font-family: arial;
+    font-size:16px;
+    font-weight:500;
+    display: inline-block;
+    
+    padding-bottom:8px;
+}
+.form-control{
+    width:100%;
+    border:1px solid #ddd;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 5px;
+    display: inline-block;
+ 
+}
+.column{
+    width: 20%;
+}
+.float{
+    float: left;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: block;
+}
+.buttonAdd {
+    background-color: #f44336;
+}
+.buttonRemove {
+    background-color: #3692f4;
+    
+}
+.buttonSave {
+    background-color: #3698f4;
+}
+.alert{
+    color: #f44336;
+    display: inline-block;
+}
